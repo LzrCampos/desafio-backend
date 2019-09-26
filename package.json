@@ -1,0 +1,45 @@
+{
+  "name": "desafio-backend",
+  "version": "1.0.0",
+  "description": "Desafio back-end typescript grupo fleury",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon dist/index --delay 5",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LzrCampos/desafio-backend.git"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "web-api"
+  ],
+  "author": "lzrCampos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LzrCampos/desafio-backend/issues"
+  },
+  "homepage": "https://github.com/LzrCampos/desafio-backend#readme",
+  "devDependencies": {
+    "@types/express": "4.0.37",
+    "@types/node": "8.0.34",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "eslint": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "gulp": "3.9.1",
+    "gulp-clean": "0.3.2",
+    "gulp-typescript": "3.2.2",
+    "nodemon": "^1.19.2",
+    "typescript": "2.5.3"
+  },
+  "dependencies": {
+    "express": "4.16.2"
+  }
+}
