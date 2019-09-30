@@ -7,7 +7,7 @@ class Routes {
   constructor() {}
 
   initRoutes(app: Application): void {
-    app.route("/api/customer").post(customerControler.createUser);
+    app.route("/api/customer").post(customerControler.store);
     app.route("/api/exams").get(consultationController.getExams);
   }
 }

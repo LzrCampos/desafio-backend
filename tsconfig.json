@@ -6,7 +6,8 @@
     },
     "compileOnSave": false,
     "include": [
-        "src/**/*"
+        "src/**/*.ts",
+        "src/config/env/.env*"
     ],
     "exclude": [
         "node_modules"

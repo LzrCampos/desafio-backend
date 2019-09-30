@@ -4,12 +4,16 @@ import * as morgan from "morgan";
 import Routes from "./routes/routes";
 import * as bodyParser from "body-parser";
 import Handler from "./responses/handlers";
+import { DotenvConfigOptions } from "dotenv";
 
 class App {
   public express: express.Application;
+  public env: string;
 
   constructor() {
     this.express = express();
+    this.env = process.env.NODE_ENV;
+
     this.middleware();
   }
 
@@ -17,7 +21,7 @@ class App {
     this.express.use(morgan("dev"));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
-    this.express.use(Handler.errorHandlerApi)
+    this.express.use(Handler.errorHandlerApi);
     this.router(this.express);
   }
 
