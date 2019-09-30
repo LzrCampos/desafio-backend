@@ -1,6 +1,7 @@
 import { Customer } from "../../src/app/models/customer.model";
+import { ICustomer } from "../../src/app/models/interfaces/customer.interface";
 
-let validInput;
+let validInput: ICustomer;
 
 describe("User model", function() {
   beforeAll(function() {
@@ -8,7 +9,7 @@ describe("User model", function() {
       firstName: "Lazaro",
       lastName: "Campos",
       cpf: "1234567890",
-      birthday: "5567890"
+      birthday: new Date("2000-09-11")
     };
   });
   it("Property validate", () => {
