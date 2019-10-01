@@ -3,4 +3,6 @@ export interface ICustomer {
   lastName: string;
   cpf: string;
   birthday: Date;
+
+  getName(): string
 }

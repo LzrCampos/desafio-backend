@@ -4,7 +4,8 @@ import * as morgan from "morgan";
 import Routes from "./routes/routes";
 import * as bodyParser from "body-parser";
 import Handler from "./responses/handlers";
-import { DotenvConfigOptions } from "dotenv";
+
+require("../services/database");
 
 class App {
   public express: express.Application;
@@ -13,7 +14,6 @@ class App {
   constructor() {
     this.express = express();
     this.env = process.env.NODE_ENV;
-
     this.middleware();
   }
 
