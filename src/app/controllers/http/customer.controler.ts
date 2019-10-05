@@ -1,38 +1,84 @@
-import { ICustomer } from "../../models/interfaces/customer.interface";
-import { Customer } from "../../models/customer.model";
-import { Request, Response } from "express";
-import * as schema from "../../../services/database/schemas/customer.schema";
+import { ICustomer } from '../../models/interfaces/customer.interface';
+import { Customer } from '../../models/customer.model';
+import { Request, Response } from 'express';
+import * as schema from '../../../services/database/schemas/customer.schema';
 
 class customerController {
-  constructor() {}
+    constructor() {}
 
-  async store(req: Request, res: Response) {
-    let customer: ICustomer;
-    customer = new Customer(req.body);
+    async store(req: Request, res: Response) {
+        let customer = new Customer(req.body);
+        let customerSchema = new schema.Customer(customer);
 
-    let customerSchema = new schema.Customer(customer);
-    try {
-      await customerSchema.save();
-      res.status(201).json({ success: true });
-    } catch (error) {
-      res.status(500).json({ error: error });
+        try {
+            await customerSchema.save();
+            res.status(201).json({ success: true });
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
     }
-  }
 
-  async update(req: Request, res: Response) {}
-
-  async delete(req: Request, res: Response) {}
-
-  async findOne(req: Request, res: Response) {
-    try {
-      let customer = await schema.Customer.findOne({ cpf: req.params.cpf });
-      res.status(200).json({ customer: customer });
-    } catch (error) {
-      res.status(500).json({ error });
+    async update(req: Request, res: Response) {
+        let customer = new Customer(req.body);
+        try {
+            let data = await schema.Customer.findByIdAndUpdate(
+                { _id: customer.cpf },
+                { $set: customer }
+            );
+            res.status(201).json({ success: true });
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
     }
-  }
 
-  async findAll(req: Request, res: Response) {}
+    async delete(req: Request, res: Response) {
+        try {
+            let data = await schema.Customer.findOneAndDelete(
+                { cpf: req.params.cpf }
+            );
+            res.status(200).json({ success: true });
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
+
+    async findOne(req: Request, res: Response) {
+        try {
+            let customer = await schema.Customer.findOne(
+                {
+                    cpf: req.params.cpf,
+                },
+                {
+                    _id: 0,
+                    firstName: 1,
+                    lastName: 1,
+                    cpf: 1,
+                    birthday: 1,
+                }
+            );
+            res.status(200).json(customer);
+        } catch (error) {
+            res.status(500).json({ error });
+        }
+    }
+
+    async findAll(req: Request, res: Response) {
+        try {
+            let customer = await schema.Customer.find(
+                {},
+                {
+                    _id: 0,
+                    firstName: 1,
+                    lastName: 1,
+                    cpf: 1,
+                    birthday: 1,
+                }
+            );
+            res.status(200).json(customer);
+        } catch (error) {
+            res.status(500).json({ error });
+        }
+    }
 }
 
 export default new customerController();

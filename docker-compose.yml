@@ -5,16 +5,16 @@ networks:
   web:
 
 services:
-  # desafio-backend:
-  #   image: desafio-backend
-  #   build: .
-  #   environment:
-  #     NODE_ENV: dev
-  #   ports:
-  #     - 3001:3000
-  #   networks: 
-  #     - web
-  #     - db
+  desafio-backend:
+    image: desafio-backend
+    build: .
+    environment:
+      NODE_ENV: dev
+    ports:
+      - 3001:3000
+    networks: 
+      - web
+      - db
   mongo:
     image: mongo
     container_name: mongodb-desafio

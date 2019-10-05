@@ -7,7 +7,8 @@ mongoose
   .connect(`mongodb://localhost:27017/${dbName}`, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => {})
   .catch(err => {
