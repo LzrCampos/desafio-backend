@@ -12,7 +12,10 @@ class Routes {
     app.route("/api/customer/:cpf").delete(customerControler.delete);
     app.route("/api/customer").get(customerControler.findAll);
     app.route("/api/customer/:cpf").get(customerControler.findOne);
-    app.route("/api/exams").get(consultationController.getExams);
+    app.route("/api/exams").get(consultationController.findExams);
+    app.route("/api/consultation").post(consultationController.store);
+    app.route("/api/consultation").get(consultationController.findAll);
+    
   }
 }
 

@@ -10,7 +10,9 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false
   })
-  .then(() => {})
+  .then(() => {
+    console.log('Successfully connected to Database.')
+  })
   .catch(err => {
     console.error(
       `MongoDB connection error. Please make sure MongoDB is running. ${err}`

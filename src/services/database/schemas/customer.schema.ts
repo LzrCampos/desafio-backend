@@ -6,10 +6,10 @@ export interface ICustomerModel extends ICustomer, Document {}
 
 const customerSchema: Schema = new Schema(
   {
-    firstName: { type: String },
-    lastName: { type: String },
-    cpf: { type: String, unique: true },
-    birthday: { type: Date }
+    firstName: { type: String, required:true },
+    lastName: { type: String, required:true },
+    cpf: { type: String, required:true, unique: true },
+    birthday: { type: Date, required:true }
   },
   { timestamps: true }
 );
